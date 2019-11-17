@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS lms_database;
-CREATE DATABASE lms_database;
+DROP DATABASE IF EXISTS lms_db;
+CREATE DATABASE lms_db;
 
-\connect lms_database;
+\connect lms_db;
 
 DROP SCHEMA IF EXISTS lms CASCADE;
 CREATE SCHEMA lms;
@@ -14,17 +14,17 @@ CREATE TABLE lms.users (
 );
 
 CREATE TABLE lms.teachers (
-	id bigserial primary key,
+	id bigserial,
 	academic_degree varchar(30)
 ) INHERITS (lms.users);
 
 CREATE TABLE lms.students (
-	id bigserial primary key,
+	id bigserial,
 	birthdate date
 ) INHERITS (lms.users);
 
 CREATE TABLE lms.institutions (
-	id bigserial primary key,
+	id bigserial,
 	name varchar(30),
 	address varchar(30),
 	phone varchar(30),
@@ -32,7 +32,7 @@ CREATE TABLE lms.institutions (
 );
 
 CREATE TABLE lms.courses (
-	id bigserial primary key,
+	id bigserial,
 	teacher_id bigserial,
 	institution_id bigserial,
 	name varchar(80),
