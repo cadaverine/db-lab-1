@@ -6,22 +6,23 @@ CREATE DATABASE lms_db;
 DROP SCHEMA IF EXISTS lms CASCADE;
 CREATE SCHEMA lms;
 
-CREATE TABLE lms.users (
+CREATE TABLE lms.teachers (
+	id bigserial,
 	first_name varchar(30),
 	last_name varchar(30),
 	phone varchar(30),
-	email varchar(30)
-);
-
-CREATE TABLE lms.teachers (
-	id bigserial,
+	email varchar(30),
 	academic_degree varchar(30)
-) INHERITS (lms.users);
+);
 
 CREATE TABLE lms.students (
 	id bigserial,
+	first_name varchar(30),
+	last_name varchar(30),
+	phone varchar(30),
+	email varchar(30),
 	birthdate date
-) INHERITS (lms.users);
+);
 
 CREATE TABLE lms.institutions (
 	id bigserial,
@@ -37,7 +38,7 @@ CREATE TABLE lms.courses (
 	institution_id bigserial,
 	name varchar(80),
 	description text,
-	duration varchar(30),
+	duration numeric,
 	registration_date date
 );
 
