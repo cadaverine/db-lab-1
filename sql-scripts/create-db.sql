@@ -27,9 +27,9 @@ CREATE TABLE lms.students (
 CREATE TABLE lms.institutions (
 	id bigserial,
 	name varchar(30),
-	address varchar(30),
+	address varchar(80),
 	phone varchar(30),
-	email varchar(30)
+	email varchar(80)
 );
 
 CREATE TABLE lms.courses (
