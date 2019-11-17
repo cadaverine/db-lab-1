@@ -9,11 +9,11 @@ ALTER TABLE lms.students
   ADD CHECK (birthdate BETWEEN '1960-01-01' AND '2007-01-01');
 
 ALTER TABLE lms.institutions
-  ADD PRIMARY KEY (id),
-  ADD CHECK (phone LIKE '[0-9]{5, 20}');
+  ADD PRIMARY KEY (id);
 
 ALTER TABLE lms.courses
   ADD PRIMARY KEY (id),
+  ADD CHECK (duration > 0),
   ADD CONSTRAINT fk_teacher_id FOREIGN KEY (teacher_id) REFERENCES lms.teachers (id),
   ADD CONSTRAINT fk_institution_id FOREIGN KEY (institution_id) REFERENCES lms.institutions (id);
 
