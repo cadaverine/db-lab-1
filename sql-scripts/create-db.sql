@@ -1,8 +1,12 @@
+DROP DATABASE IF EXISTS lms_database;
+CREATE DATABASE lms_database;
+
+\connect lms_database;
+
 DROP SCHEMA IF EXISTS lms CASCADE;
 CREATE SCHEMA lms;
 
 CREATE TABLE lms.users (
-	id bigserial primary key,
 	first_name varchar(30),
 	last_name varchar(30),
 	phone varchar(30),
@@ -10,10 +14,12 @@ CREATE TABLE lms.users (
 );
 
 CREATE TABLE lms.teachers (
+	id bigserial primary key,
 	academic_degree varchar(30)
 ) INHERITS (lms.users);
 
 CREATE TABLE lms.students (
+	id bigserial primary key,
 	birthdate date
 ) INHERITS (lms.users);
 
