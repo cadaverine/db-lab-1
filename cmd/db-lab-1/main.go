@@ -3,12 +3,13 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
+	g "github.com/cadaverine/db-lab-1/db-generators"
 	"log"
 	"os"
 )
 
 func writeToCSV(path string, values [][]string) {
-	file, err := os.Create("../test-data/institutions.csv")
+	file, err := os.Create(path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,7 +26,7 @@ func main() {
 	fmt.Print("Type institutions num: ")
 	fmt.Scanln(&institutionsNum)
 
-	institutionsData := generateInstitutionsData(institutionsNum)
+	institutionsData := g.GenerateInstitutionsData(institutionsNum)
 
-	writeToCSV("../test-data/institutions.csv", institutionsData)
+	writeToCSV("test-data/institutions.csv", institutionsData)
 }
