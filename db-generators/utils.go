@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func getRandomValue(values []string) (string, error) {
@@ -42,4 +43,13 @@ func generateEmail(head, tail string) string {
 	name := strings.ReplaceAll(strings.ToLower(head+"_"+tail), " ", "")
 
 	return name + "@" + domain + "." + zone
+}
+
+func generateDate(fromYear, toYear int) string {
+	min := time.Date(fromYear, 1, 0, 0, 0, 0, 0, time.UTC).Unix()
+	max := time.Date(toYear, 1, 0, 0, 0, 0, 0, time.UTC).Unix()
+	delta := max - min
+
+	sec := rand.Int63n(delta) + min
+	return time.Unix(sec, 0).Format("2006-01-02")
 }
