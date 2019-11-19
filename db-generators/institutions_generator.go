@@ -1,6 +1,6 @@
 package dbgenerators
 
-// GenerateInstitutionsData - generate test data for
+// GenerateInstitutionsData - generate test data for table 'institutions'
 func GenerateInstitutionsData(rowsNum int) [][]string {
 	countries := []string{"Russia"}
 
