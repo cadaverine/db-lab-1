@@ -27,6 +27,33 @@ var academicDegrees []string = []string{
 	"master", "doctor", "profesional", "bachelor",
 }
 
+var coursesNames []string = []string{
+	"Operating Systems Architecture",
+	"Algorithms & Data Structures",
+	"Information Security",
+	"Computer Networks",
+	"Programming in the Large",
+	"Introduction to Computer Systems",
+	"Computer Systems Principles and Programming",
+	"Accounting for Decision Making",
+	"Financial Reporting",
+	"Transforming Business with Information Systems",
+	"Data Analytics and Information Management",
+	"Accounting Information and Software Applications",
+	"eBusiness Systems and Strategy",
+	"Information Systems Strategy",
+	"Business Law",
+	"Introduction to Management",
+	"Fundamentals of Technology and Innovation Management",
+}
+
+var coursesDescriptions []string = []string{
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+	"Nunc at risus eget eros maximus condimentum.",
+	"Nunc dictum lectus ut leo facilisis, placerat malesuada tellus aliquam.",
+	"Phasellus ut blandit ante. Morbi.",
+}
+
 func getRandomValue(values []string) (string, error) {
 	length := len(values)
 
@@ -71,4 +98,8 @@ func generateDate(fromYear, toYear int) string {
 
 	sec := rand.Int63n(delta) + min
 	return time.Unix(sec, 0).Format("2006-01-02")
+}
+
+func getRandomInt64(min, max int64) int64 {
+	return rand.Int63n(max-min) + min
 }
