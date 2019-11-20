@@ -2,21 +2,6 @@ package dbgenerators
 
 // GenerateStudentsData - generate test data for table 'students'
 func GenerateStudentsData(rowsNum int) [][]string {
-	firstNames := []string{
-		"Boris", "Egor", "Fyodor", "Gleb", "Ivan",
-		"Konstantin", "Maksim", "Mikhail", "Oksana", "Olga",
-		"Sergei", "Vadim", "Yevgeni", "Yuri", "Anya",
-		"Luba", "Olga", "Svetlana", "Tatiana", "Yula",
-	}
-
-	lastNames := []string{
-		"Smith", "Johnson", "Williams", "Jones", "Brown",
-		"Davis", "Miller", "Wilson", "Moore", "Taylor",
-		"Anderson", "Thomas", "Jackson", "White", "Harris",
-		"Martin", "Thompson", "Garcia", "Martinez", "Robinson",
-		"Clark", "Rodriguez", "Lewis", "Lee", "Walker",
-	}
-
 	result := make([][]string, rowsNum+1)
 
 	result[0] = []string{"first_name", "last_name", "phone", "email", "birthdate"}
