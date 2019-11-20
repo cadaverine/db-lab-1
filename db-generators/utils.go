@@ -54,6 +54,10 @@ var coursesDescriptions []string = []string{
 	"Phasellus ut blandit ante. Morbi.",
 }
 
+var statuses []string = []string{
+	"registered", "in progress", "done", "dropped out",
+}
+
 func getRandomValue(values []string) (string, error) {
 	length := len(values)
 
