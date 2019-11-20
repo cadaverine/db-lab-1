@@ -22,7 +22,7 @@ func writeToCSV(path string, values [][]string) {
 }
 
 func main() {
-	var institutionsNum, studentsNum, teachersNum int
+	var institutionsNum, studentsNum, teachersNum, coursesNum int
 
 	fmt.Print("Type institutions num: ")
 	fmt.Scanln(&institutionsNum)
@@ -32,6 +32,9 @@ func main() {
 
 	fmt.Print("Type teachers num: ")
 	fmt.Scanln(&teachersNum)
+
+	fmt.Print("Type courses num: ")
+	fmt.Scanln(&coursesNum)
 
 	wg := &sync.WaitGroup{}
 	wg.Add(3)
@@ -55,4 +58,7 @@ func main() {
 	}()
 
 	wg.Wait()
+
+	coursesData := g.GenerateCoursesData(coursesNum, teachersNum, institutionsNum)
+	writeToCSV("test-data/courses.csv", coursesData)
 }
