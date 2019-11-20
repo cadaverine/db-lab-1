@@ -1,6 +1,6 @@
 package dbgenerators
 
-// GenerateTeachersData - generate test data for table 'students'
+// GenerateTeachersData - generate test data for table 'teachers'
 func GenerateTeachersData(rowsNum int) [][]string {
 	result := make([][]string, rowsNum+1)
 
