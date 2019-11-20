@@ -8,6 +8,25 @@ import (
 	"time"
 )
 
+var firstNames []string = []string{
+	"Boris", "Egor", "Fyodor", "Gleb", "Ivan",
+	"Konstantin", "Maksim", "Mikhail", "Oksana", "Olga",
+	"Sergei", "Vadim", "Yevgeni", "Yuri", "Anya",
+	"Luba", "Olga", "Svetlana", "Tatiana", "Yula",
+}
+
+var lastNames []string = []string{
+	"Smith", "Johnson", "Williams", "Jones", "Brown",
+	"Davis", "Miller", "Wilson", "Moore", "Taylor",
+	"Anderson", "Thomas", "Jackson", "White", "Harris",
+	"Martin", "Thompson", "Garcia", "Martinez", "Robinson",
+	"Clark", "Rodriguez", "Lewis", "Lee", "Walker",
+}
+
+var academicDegrees []string = []string{
+	"master", "doctor", "profesional", "bachelor",
+}
+
 func getRandomValue(values []string) (string, error) {
 	length := len(values)
 
