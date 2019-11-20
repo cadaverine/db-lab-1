@@ -44,7 +44,7 @@ func main() {
 	fmt.Scanln(&processesNum)
 
 	wg := &sync.WaitGroup{}
-	wg.Add(3)
+	wg.Add(5)
 
 	go func() {
 		institutionsData := g.GenerateInstitutionsData(institutionsNum)
@@ -64,11 +64,17 @@ func main() {
 		wg.Done()
 	}()
 
+	go func() {
+		coursesData := g.GenerateCoursesData(coursesNum, teachersNum, institutionsNum)
+		writeToCSV("test-data/courses.csv", coursesData)
+		wg.Done()
+	}()
+
+	go func() {
+		processesData := g.GenerateProcessesData(processesNum, coursesNum, studentsNum)
+		writeToCSV("test-data/stydying-processes.csv", processesData)
+		wg.Done()
+	}()
+
 	wg.Wait()
-
-	coursesData := g.GenerateCoursesData(coursesNum, teachersNum, institutionsNum)
-	writeToCSV("test-data/courses.csv", coursesData)
-
-	processesData := g.GenerateProcessesData(processesNum, coursesNum, studentsNum)
-	writeToCSV("test-data/stydying-processes.csv", processesData)
 }
