@@ -6,6 +6,7 @@ import (
 	g "github.com/cadaverine/db-lab-1/db-generators"
 	"log"
 	"os"
+	"sync"
 )
 
 func writeToCSV(path string, values [][]string) {
@@ -21,17 +22,37 @@ func writeToCSV(path string, values [][]string) {
 }
 
 func main() {
-	var institutionsNum, studentsNum int
+	var institutionsNum, studentsNum, teachersNum int
 
 	fmt.Print("Type institutions num: ")
 	fmt.Scanln(&institutionsNum)
 
-	institutionsData := g.GenerateInstitutionsData(institutionsNum)
-	writeToCSV("test-data/institutions.csv", institutionsData)
-
 	fmt.Print("Type students num: ")
 	fmt.Scanln(&studentsNum)
 
-	studentsData := g.GenerateStudentsData(studentsNum)
-	writeToCSV("test-data/students.csv", studentsData)
+	fmt.Print("Type teachers num: ")
+	fmt.Scanln(&teachersNum)
+
+	wg := &sync.WaitGroup{}
+	wg.Add(3)
+
+	go func() {
+		institutionsData := g.GenerateInstitutionsData(institutionsNum)
+		writeToCSV("test-data/institutions.csv", institutionsData)
+		wg.Done()
+	}()
+
+	go func() {
+		studentsData := g.GenerateStudentsData(studentsNum)
+		writeToCSV("test-data/students.csv", studentsData)
+		wg.Done()
+	}()
+
+	go func() {
+		teachersData := g.GenerateTeachersData(teachersNum)
+		writeToCSV("test-data/teachers.csv", teachersData)
+		wg.Done()
+	}()
+
+	wg.Wait()
 }
